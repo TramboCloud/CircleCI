@@ -1,0 +1,35 @@
+version: 2.1
+jobs:
+  job_1:
+    docker:
+      - image: circleci/php:7.3.12
+    steps:
+      - checkout
+      - run:
+          name: Generate Some File
+          command: |
+            mkdir folder
+            touch a_file.txt
+      - persist_to_workspace:
+          root: .
+          paths:
+            - folder
+  job_2:
+    docker:
+      - image: circleci/golang:1.13.8
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /tmp
+      - run:
+          name: Check files
+          command: |
+            ls /tmp
+workflows:
+  version: 2
+  document:
+    jobs:
+      - job_1
+      - job_2:
+          requires:
+            - job_1
