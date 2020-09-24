@@ -9,7 +9,8 @@ jobs:
           name: Generate Some File
           command: |
             mkdir folder
-            touch a_file.txt
+            echo "echo 'Hello World!!'" > folder/a_file.sh
+            chmod +x folder/a_file.sh
       - persist_to_workspace:
           root: .
           paths:
@@ -20,11 +21,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp
+          at: tmp
       - run:
           name: Check files
           command: |
-            ls /tmp
+            ls tmp
 workflows:
   version: 2
   document:
