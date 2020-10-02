@@ -20,12 +20,10 @@ jobs:
       - image: circleci/golang:1.13.8
     steps:
       - checkout
-      - attach_workspace:
-          at: tmp
       - run:
           name: Check files
           command: |
-            ./tmp/folder/a_file.sh
+            ./a_file.sh
 workflows:
   version: 2
   document:
