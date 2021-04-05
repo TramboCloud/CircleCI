@@ -8,29 +8,9 @@ jobs:
       - run:
           name: Generate Some File
           command: |
-            mkdir folder
-            echo "echo 'Hello World!!'" > folder/a_file.sh
-            chmod +x folder/a_file.sh
-      - persist_to_workspace:
-          root: .
-          paths:
-            - folder
-  job_2:
-    docker:
-      - image: circleci/golang:1.13.8
-    steps:
-      - checkout
-      - attach_workspace:
-          at: tmp
-      - run:
-          name: Check files
-          command: |
-            ./tmp/folder/a_file.sh
+            echo "Hello World!"
 workflows:
   version: 2
   document:
     jobs:
       - job_1
-      - job_2:
-          requires:
-            - job_1
