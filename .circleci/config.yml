@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Use Artifact
           command: |
-            ./a_file.sh
+            ./tmp/folder/a_file.sh
 workflows:
   version: 2
   document:
