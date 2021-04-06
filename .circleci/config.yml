@@ -15,8 +15,20 @@ jobs:
           root: .
           paths:
             - folder
+  job_2:
+    docker:
+      - image: circleci/golang:1.13.8
+    steps:
+      - checkout
+      - run:
+        name: Use Artifact
+        command: |
+          ./a_file.sh
 workflows:
   version: 2
   document:
     jobs:
       - job_1
+      - job_2:
+        requires:
+          - job_1
