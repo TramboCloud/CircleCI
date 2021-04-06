@@ -9,6 +9,7 @@ jobs:
           name: Generate Some File
           command: |
             echo "Hello World!"
+            exit 1
 workflows:
   version: 2
   document:
