@@ -20,6 +20,8 @@ jobs:
       - image: circleci/golang:1.13.8
     steps:
       - checkout
+      - attach_workspace:
+          at: tmp
       - run:
           name: Use Artifact
           command: |
