@@ -8,8 +8,13 @@ jobs:
       - run:
           name: Generate Some File
           command: |
-            echo "Hello World!"
-            exit 1
+            mkdir folder
+            echo "echo 'Hello World!! from a bash script'" > folder/a_file.sh
+            chmod +x folder/a_file.sh
+      - persist_to_workspace:
+          root: .
+          paths:
+            - folder
 workflows:
   version: 2
   document:
